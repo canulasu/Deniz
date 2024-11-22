@@ -1,3 +1,4 @@
+
 import subprocess
 
 filename = 'PyQt5'
@@ -33,6 +34,8 @@ class MainWindow(QMainWindow):
         self.browser.setUrl(QUrl('https://start.me/p/aNdJ6m/pagina-de-inicio'))
         self.setCentralWidget(self.browser)
         self.showMaximized()
+
+        self.setWindowTitle('Van Kedisi Browser')
 
         navbar = QToolBar()
         self.addToolBar(navbar)
@@ -88,4 +91,3 @@ app = QApplication(sys.argv)
 QApplication.setApplicationName('Jakaranda Search')
 window = MainWindow()
 app.exec_()
-
