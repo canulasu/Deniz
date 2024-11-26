@@ -85,10 +85,13 @@ class MainWindow(QMainWindow):
     def navigate_mobile(self):
         if self.mobile == False:
             self.setFixedSize(360, 640)
+            self.setWindowFlags(self.windowFlags() | Qt.WindowStaysOnTopHint)
             self.mobile = True
         else:
             self.setFixedSize(1460, 820)
+            self.setWindowFlags(self.windowFlags() & ~Qt.WindowStaysOnTopHint)
             self.mobile = False
+        self.show()
 
     def navigate_random(self):
         self.browser.setUrl(QUrl('https://en.wikipedia.org/wiki/Special:Random'))
