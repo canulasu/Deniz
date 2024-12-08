@@ -1,4 +1,3 @@
-
 import subprocess
 
 filename = 'PyQt5'
@@ -56,6 +55,10 @@ class MainWindow(QMainWindow):
         homebtn.triggered.connect(self.navigate_home)
         navbar.addAction(homebtn)
 
+        tabbtn = QAction('New Tab', self)
+        tabbtn.triggered.connect(self.new_tab)
+        navbar.addAction(tabbtn)
+
         self.urlbar = QLineEdit(self)
         self.urlbar.returnPressed.connect(self.navigate_custom)
         navbar.addWidget(self.urlbar)
@@ -67,6 +70,9 @@ class MainWindow(QMainWindow):
             self.browser.setUrl(QUrl('https://sites.google.com/view/jdhow5h7q0hf0unuhtq07438fu8hf/home'))
         if self.browser.url().toString() == 'https://www.stormfront.org':
             self.browser.setUrl(QUrl('https://sites.google.com/view/jdhow5h7q0hf0unuhtq07438fu8hf/home'))
+
+    def new_tab(self):
+        subprocess.Popen([sys.executable, __file__])
 
 
     def navigate_custom(self):
