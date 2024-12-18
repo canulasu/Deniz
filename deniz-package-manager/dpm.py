@@ -11,6 +11,7 @@ parser.add_argument('-j', '--jpg', type=str, help='Use the default DPM install c
 parser.add_argument('-p', '--png', type=str, help='Use default DPM install command for PNG files.')
 parser.add_argument('-i', '--install', type=str, help='Use the DPM application library.')
 parser.add_argument('-m', '--macos', type=str, help='Use the DPM application library for MacOS.')
+parser.add_argument('-g', '--github', type=str, help='DPM GitHub Repository Installer.')
 
 args = parser.parse_args()
 
@@ -162,3 +163,29 @@ if args.macos:
             print('Error: could not install Raspi Imager package')
             print('Error: this is probably a problem with the')
             print('Error: wait for a new update and try again')
+
+    if package_name == 'blender-4':
+        
+        try:
+            response = requests.get('https://www.blender.org/download/release/Blender4.3/blender-4.3.2-macos-arm64.dmg/')
+
+            with open('blender-4.3.2-macos-arm64.dmg', 'wb') as file:
+                file.write(response.content)
+        except:
+            print('Error: could not install Blender package')
+            print('Error: this is probably a problem with the')
+            print('Error: wait for a new update and try again')
+
+if args.github:
+
+    package_name = args.github
+
+    try:
+        response = requests.get(package_name+'/archive/refs/heads/main.zip')
+
+        with open('repository.zip', 'wb') as file:
+            file.write(response.content)
+    except:
+        print('Error: could not install GitHub Repository')
+        print('Error: this is probably a problem with the')
+        print('Error: wait for a new update and try again')
