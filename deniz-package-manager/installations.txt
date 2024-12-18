@@ -1,5 +1,13 @@
-Packages Available for Install On the Deniz Package Manager
+Packages Available for Install On the Deniz Package Manager App Library:
 
 Debian Linux x86_64
 Black Arch Linux x86_64
 Vivaldi Browser
+
+Packages Available for Install On the Deniz Package Manager App Library for MacOS:
+
+Vivaldi Browser for MacOS
+UTM Virtual Machines for MacOS
+Balena Etcher for MacOS
+Steam Store for MacOS
+Raspberry Pi Imager for MacOS
