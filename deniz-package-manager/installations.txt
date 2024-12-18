@@ -6,8 +6,13 @@ Vivaldi Browser
 
 Packages Available for Install On the Deniz Package Manager App Library for MacOS:
 
-Vivaldi Browser for MacOS
-UTM Virtual Machines for MacOS
-Balena Etcher for MacOS
-Steam Store for MacOS
-Raspberry Pi Imager for MacOS
+Vivaldi Browser for MacOS - vivaldi
+UTM Virtual Machines for MacOS - utm
+Balena Etcher for MacOS - balenaetcher
+Steam Store for MacOS - steam
+Raspberry Pi Imager for MacOS - raspi-imager
+Blender for Macos - blender4
+
+DPM Package Manager Additional Features
+
+GitHub Repository Installation
