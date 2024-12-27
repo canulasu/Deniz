@@ -3,6 +3,10 @@ from tkinter import messagebox
 import platform
 import os
 
+# define key variables
+
+mode = 'light'
+
 # define functions
 
 class menu_functions():
@@ -58,9 +62,30 @@ def load_menu():
     about_button = tk.Button(menu, text='About', command=menu_functions.about_text)
     about_button.pack(pady=10, padx=10)
 
+    color_button = tk.Button(menu, text='Change Color', command=change_color_profile)
+    color_button.pack(pady=10, padx=10)
+
     menu.mainloop()
 
+def change_color_profile():
 
+    global mode
+    global main_text_box
+    global save_query_box
+
+    if mode == 'light':
+        main_text_box.configure(bg='black')
+        main_text_box.configure(fg='white')
+        save_query_box.configure(bg='black')
+        save_query_box.configure(fg='white')
+        mode = 'dark'
+
+    elif mode == 'dark':
+        main_text_box.configure(bg='white')
+        main_text_box.configure(fg='black')
+        save_query_box.configure(bg='white')
+        save_query_box.configure(fg='black')
+        mode = 'light'
 
 root = tk.Tk()
 
