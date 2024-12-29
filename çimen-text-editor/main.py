@@ -23,6 +23,50 @@ def delete_file(event=None):
     except FileNotFoundError:
         messagebox.showinfo('Error', 'File not found!')
 
+def syantax_on(event=None):
+
+    main_text_box.tag_remove('highlight_print', '1.0', tk.END)
+    main_text_box.tag_remove('highlight_true', '1.0', tk.END)
+    main_text_box.tag_remove('highlight_false', '1.0', tk.END)
+
+    start = '1.0'
+
+    while True:
+        pos = main_text_box.search('print', start, stopindex=tk.END, nocase=True)
+
+        if not pos:
+            break
+
+        end = f"{pos}+{len('print')}c"
+
+        main_text_box.tag_add('highlight_print', pos, end)
+        start = end
+
+
+        pos = main_text_box.search('True', start, stopindex=tk.END, nocase=True)
+
+        if not pos:
+            break
+
+        end = f"{pos}+{len('True')}c"
+
+        main_text_box.tag_add('highlight_true', pos, end)
+        start = end
+
+        pos = main_text_box.search('False', start, stopindex=tk.END, nocase=True)
+
+        if not pos:
+            break
+
+        end = f"{pos}+{len('False')}c"
+
+        main_text_box.tag_add('highlight_false', pos, end)
+        start = end
+        
+    main_text_box.tag_config('highlight_true', foreground='blue')
+    main_text_box.tag_config('highlight_false', foreground='blue')
+    main_text_box.tag_config('highlight_print', foreground='yellow')
+
 def save_text(event=None):
 
     filename = save_query_box.get('1.0', tk.END).strip()
@@ -63,6 +107,9 @@ def load_menu():
     about_button.pack(pady=10, padx=10)
 
     color_button = tk.Button(menu, text='Change Color', command=change_color_profile)
+    color_button.pack(pady=10, padx=10)
+
+    color_button = tk.Button(menu, text='Update Syntax', command=syantax_on)
     color_button.pack(pady=10, padx=10)
 
     menu.mainloop()
