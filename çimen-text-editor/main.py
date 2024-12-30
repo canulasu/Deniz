@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+from tkinter import filedialog
 import platform
 import os
 
@@ -83,6 +84,15 @@ def save_text(event=None):
     
     messagebox.showinfo('Save', 'File saved successfully!')
 
+def choose_file():
+    file_path = filedialog.askopenfilename(title='Choose a file', filetypes=(("Text files", "*.txt"), ("All files", "*.*")))
+
+    if file_path:
+        save_query_box.delete('1.0', tk.END)
+        save_query_box.insert('1.0', file_path)
+    else:
+        pass
+
 def load_text_to_entry():
 
     messagebox.showinfo('Refresh', 'You will lose any unsaved progress!')
@@ -149,6 +159,9 @@ refresh_button = tk.Button(top_frame, text='Refresh', command=load_text_to_entry
 refresh_button.pack(side='left', padx=10)
 
 menu_button = tk.Button(top_frame, text='Menu', command=load_menu)
+menu_button.pack(side='left', padx=10)
+
+menu_button = tk.Button(top_frame, text='Choose File', command=choose_file)
 menu_button.pack(side='left', padx=10)
 
 save_query_box = tk.Text(top_frame, width=40, height=1)
