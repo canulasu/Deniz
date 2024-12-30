@@ -111,7 +111,7 @@ def load_menu():
 
     menu = tk.Tk()
     menu.title('Menu')
-    menu.geometry('200x200')
+    menu.geometry('200x400')
 
     about_button = tk.Button(menu, text='About', command=menu_functions.about_text)
     about_button.pack(pady=10, padx=10)
@@ -135,6 +135,8 @@ def change_color_profile():
         main_text_box.configure(fg='white')
         save_query_box.configure(bg='black')
         save_query_box.configure(fg='white')
+        root.configure(bg='black')
+        top_frame.configure(bg='black')
         mode = 'dark'
 
     elif mode == 'dark':
@@ -142,6 +144,8 @@ def change_color_profile():
         main_text_box.configure(fg='black')
         save_query_box.configure(bg='white')
         save_query_box.configure(fg='black')
+        root.configure(bg='white')
+        top_frame.configure(bg='white')
         mode = 'light'
 
 root = tk.Tk()
@@ -172,9 +176,9 @@ main_text_box.pack(pady=10, padx=10, expand=True, fill='both')
 
 if platform.system() == 'Darwin':
     root.bind('<Command-s>', save_text)
-    root.bind('<Command-x>', delete_file)
+    root.bind('<Command-d>', delete_file)
 else:
     root.bind('<Control-s>', save_text)
-    root.bind('<Control-x>', delete_file)  
+    root.bind('<Control-d>', delete_file)  
 
 root.mainloop()
