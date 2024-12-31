@@ -13,7 +13,7 @@ mode = 'light'
 class menu_functions():
 
     def about_text():
-        messagebox.showinfo('About', 'Deniz Çimen Text Editor V.0.0.1')
+        messagebox.showinfo('About', 'Deniz Çimen Text Editor V.0.0.2')
 
 def delete_file(event=None): 
     filename = save_query_box.get('1.0', tk.END).strip()
@@ -122,6 +122,9 @@ def load_menu():
     color_button = tk.Button(menu, text='Update Syntax', command=syantax_on)
     color_button.pack(pady=10, padx=10)
 
+    color_button = tk.Button(menu, text='Run Code', command=execute_code)
+    color_button.pack(pady=10, padx=10)
+
     menu.mainloop()
 
 def change_color_profile():
@@ -148,10 +151,38 @@ def change_color_profile():
         top_frame.configure(bg='white')
         mode = 'light'
 
+def execute_code():
+
+    if save_query_box.get('1.0', tk.END).strip() == '':
+        messagebox.showinfo('Error', 'File Does Not Exist')
+
+    elif '.py' in save_query_box.get('1.0', tk.END).strip():
+        if platform.system() == 'Darwin':
+            os.system(f'python3 {save_query_box.get("1.0", tk.END).strip()}')
+        elif platform.system() == 'Linux':
+            os.system(f'python3 {save_query_box.get("1.0", tk.END).strip()}')
+        elif platform.system() == 'Windows':
+            os.system(f'python {save_query_box.get("1.0", tk.END).strip()}')
+
+    elif '.rb' in save_query_box.get('1.0', tk.END).strip():
+        os.system(f'ruby {save_query_box.get("1.0", tk.END).strip()}')
+
+    elif '.js' in save_query_box.get('1.0', tk.END).strip():
+        os.system(f'node {save_query_box.get("1.0", tk.END).strip()}')
+
+    elif '.lua' in save_query_box.get('1.0', tk.END).strip():
+        os.system(f'lua {save_query_box.get("1.0", tk.END).strip()}')
+
+    elif '.pl' in save_query_box.get('1.0', tk.END).strip():
+        os.system(f'perl {save_query_box.get("1.0", tk.END).strip()}')
+    
+    else:
+        messagebox.showinfo('Error', 'Language Not Yet Supported')
+
 root = tk.Tk()
 
 root.title('Çimen Text Editor')
-root.attributes('-fullscreen', True)
+root.geometry('1024x768')
 
 top_frame = tk.Frame(root)
 top_frame.pack(side='top', anchor='nw', pady=10, padx=10, fill='x')
